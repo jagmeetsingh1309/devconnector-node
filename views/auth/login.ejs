@@ -1,0 +1,44 @@
+<%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+
+    <main>
+        <div class="grid">
+            <% if(errorMessage) { %>
+                <div class="msg mt-2">
+                    <div class="err-msg"><%= errorMessage %></div>
+                </div>
+            <% } %>
+            <div class="page-header mt-1">
+                <h1 class="blue-headline">Sign In</h1>
+                <h3 class="mb-1">Sign In Your Account</h3>
+            </div>
+            <form method="post" action="/login">
+                <input 
+                    class="<%= errors.find(e => e.param == 'email') ? 'invalid': '' %> form-control mt-1 mb-1" 
+                    type="email" 
+                    name="email" 
+                    value="<%= oldInput.email %>"
+                    placeholder="Email"
+                >
+                <input 
+                    class="<%= errors.find(e => e.param == 'password') ? 'invalid': '' %> form-control mb-1" 
+                    type="password" 
+                    name="password" 
+                    value="<%= oldInput.password %>"
+                    placeholder="Password"
+                >
+                <button type="submit" class="btn btn-primary mb-1">Submit</button>
+            </form>
+    
+            <p class="page-footer">Dont have an account? <a href="/signup" class="blue"> Sign up.</a></p>
+        </div>
+    </main>
+    
+    
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,22 @@
+.page-header,.page-footer{
+    grid-column: 2/8;
+}
+
+.profile-experience,.profile-education{
+    grid-column: 2/12;
+}
+
+table{
+    width: 100%;
+}
+
+th{
+    height: 2rem;
+    background-color: rgb(240, 231, 231);
+}
+
+
+td{
+    text-align: center;
+    padding: 1rem;
+}

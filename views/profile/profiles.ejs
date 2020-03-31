@@ -1,0 +1,46 @@
+<%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/css/profiles.css" >
+    <title>Profiles</title>
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main>
+        <div class="grid">
+            <div class="page-header mt-1">
+                <h1 class="blue">Developers</h1>
+                <p class="mb-2">Browse and connect with developers.</p>
+            </div>
+            <div class="developer-list">
+                <% if(profiles.length > 0) { %>
+                    <% profiles.forEach(function(profile){ %>
+                        <div class="card mb-1">
+                            <div class="card-body d-flex">
+                                <div class="card-section m-1">
+                                    <img src="/<%= profile.imageUrl %>" alt="" class="rounded-img">
+                                </div>
+                                <div class="card-section d-flex mt-2">
+                                    <div class="text-center">
+                                        <h3><%= profile.username %></h3>
+                                        <p><%= profile.description %></p>
+                                        <p><%= profile.address %></p>
+                                        <a class="btn btn-primary" href="/profiles/<%= profile._id %>"> View Profile</a>
+                                    </div>
+                                    <div class="text-center ml-2">
+                                        <ul class="skill-list">
+                                            <% profile.skills.forEach(function(skill){ %>
+                                                <li><%= skill %></li>
+                                            <% }); %>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No Developers Found.</p>
+                <% }; %>
+            </div>     
+    </main>
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,61 @@
+<%- include('../partials/head.ejs') %>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <main class="mb-2">
+        <%- include('../partials/navigation.ejs') %>
+        <div class="grid">
+            <div class="page-header mt-1">
+                <a href="/profiles" class="btn btn-default mb-1">Back To Profiles</a>
+            </div>    
+            <div class=" profile-header card ">
+                <div class="card-body blue-background text-center pt-1">
+                    <img class="rounded-img" src="/<%= profile.imageUrl %>">
+                    <h1><%= username %></h1>
+                    <h3 class="mt-1"><%= profile.status %></h3>
+                    <p class="mt-1"><%= profile.address %></p>
+                </div>
+            </div> 
+            <div class="profile-details card">
+                <div class="card-body text-center">
+                    <h3 class="blue mb-1"><%= username %>'s Bio</h3>
+                    <p><%= profile.description %></p>
+                    <h3 class="blue mt-1 mb-1">Skill Set</h3>
+                    <ul class="skill-list d-flex">
+                        <% profile.skills.forEach( function(skill){ %>
+                            <li><%= skill %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+            <% if(experiences.length > 0) { %>
+                <div class="profile-experience card">
+                    <div class="card-body p-2">
+                        <h2 class="blue mb-1">Experience</h2>
+                        <% experiences.forEach(function(experience){ %>
+                            <h3 class="mb-1"><%= experience.company %></h3>
+                            <span><%= moment(experience.startDate).format( 'MMM-DD-YYYY') %> to <%= moment(experience.endDate).format( 'MMM-DD-YYYY') %></span><br>
+                            <span>Position: <%= experience.title %></span>
+                            <p>Description: <%= experience.description %></p>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>
+            <% if(educations.length > 0) { %>
+                <div class="profile-education card">
+                    <div class="card-body p-2">
+                        <h2 class="blue mb-1">Education</h2>
+                        <% educations.forEach(function(education){ %>
+                            <h3 class="mb-1"><%= education.school %></h3>
+                            <span><%= moment(education.startDate).format( 'MMM-DD-YYYY') %> to <%= moment(education.endDate).format( 'MMM-DD-YYYY') %></span><br>
+                            <span>Degreee: <%= education.degree %></span>
+                            <p>Description: <%= education.description %></p>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>     
+        </div>
+    </main>
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

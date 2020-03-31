@@ -1,0 +1,7 @@
+.page-header{
+    grid-column: 2/12;
+}
+
+.post-detail, form, .add-comment, .comment-list{
+    grid-column: 2/12;
+}

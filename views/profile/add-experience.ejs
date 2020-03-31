@@ -1,0 +1,74 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main class="mb-2">
+        <div class="grid">
+
+            <% if(errorMessage) { %>
+                <div class="msg mt-2">
+                    <div class="err-msg"><%= errorMessage %></div>
+                </div>
+            <% } %>
+
+            <div class="page-header">
+                <h1 class="blue mb-1">Add An Experience</h1>
+                <h2 class="mb-1"><i class="fas fa-code-branch"></i> Add any developer/programming positions that you have had in past.</h2>
+                <p class="mb-1">* = Mandatory Fields.</p>
+            </div>
+            
+            <form action="/add-experience" method="POST">
+                <input 
+                    type="text" 
+                    name="title" 
+                    placeholder="* Job Title" 
+                    value="<%= oldInput.title %>"
+                    class="<%= errors.find(e => e.param == 'title') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="text"
+                    name="company"
+                    placeholder="* Company"
+                    value="<%= oldInput.company %>" 
+                    class="<%= errors.find(e => e.param == 'company') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="text" 
+                    name="location" 
+                    placeholder="Location" 
+                    value="<%= oldInput.location %>"
+                    class="form-control mb-1"
+                >
+                <input 
+                    type="date" 
+                    name="startDate"
+                    value="<%= oldInput.startDate %>"
+                    placeholder="* Start date(dd/mm/yyyy)" 
+                    class="<%= errors.find(e => e.param == 'startDate') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="date" 
+                    name="endDate" 
+                    value="<%= oldInput.endDate %>"
+                    placeholder="* End date(dd/mm/yyyy)" 
+                    class="<%= errors.find(e => e.param == 'endDate') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <textarea 
+                    type="text" 
+                    name="description" 
+                    rows="5" 
+                    value="<%= oldInput.description%>"
+                    placeholder="Job Description" 
+                    class="<%= errors.find(e => e.param == 'description') ? 'invalid' : '' %> form-control mb-2"
+                ></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/dashboard" class="btn btn-default">Go Back</a>
+            </form>
+
+        </div>
+
+    </main>
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

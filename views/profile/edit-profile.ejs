@@ -1,0 +1,68 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main class="mb-2">
+        <div class="grid">
+
+            <% if(errorMessage){ %>
+                <div class="msg mt-2">
+                    <div class="err-msg"><%= errorMessage %></div>
+                </div>
+            <% } %>
+
+            <div class="page-header">
+                <h1 class="blue">Create Your Profile</h1>
+                <h2><i class="fas fa-user"></i> Let's get some information to make your profile stand out.</h2>
+                <p>* = Mandatory fields</p>
+            </div>
+
+            <form action="/edit-profile" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="userId" value="<%= userId %>">
+                <select 
+                    name="status" 
+                    class="<%= errors.find(e => e.param == 'status') ? 'invalid' : '' %> form-control mb-1"
+                >
+                    <option value="none" <%= status== 'none'? 'selected' : '' %>>Select Status</option>
+                    <option value="Developer" <%= status== 'Developer'? 'selected' : '' %> >Developer</option>
+                    <option value="Junior Developer" <%= status== 'Junior Developer'? 'selected' : '' %>>Junior Developer</option>
+                    <option value="Senior Developer" <%= status== 'Senior Developer'? 'selected' : '' %>>Senior Developer</option>
+                    <option value="Manager" <%= status== 'Manager'? 'selected' : '' %> > Manager</option>
+                    <option value="Intern" <%= status== 'Intern'? 'selected' : '' %> > Intern</option>
+                    <option value="Instructor" <%= status== 'Instructor'? 'selected' : '' %> >Instructor </option>
+                    <option value="Other" <%= status== 'Other'? 'selected' : '' %> >Other</option>
+                </select>
+                <input type="file" name="image" value="<%= imageUrl %>" placeholder="Upload Display Picture" class="form-control mb-1">
+                <input type="text" name="company" value="<%= company %>" placeholder="Company" class="form-control mb-1">
+                <input type="text" name="website" value="<%= website %>" placeholder="Website" class="form-control mb-1">
+                <input 
+                    type="text" 
+                    name="address" 
+                    value="<%= address %>" 
+                    placeholder="Address" 
+                    class="<%= errors.find(e => e.param == 'address') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="text" 
+                    name="skills" 
+                    value="<%= skills %>" 
+                    placeholder="Skills" 
+                    class="<%= errors.find(e => e.param == 'skills') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <textarea 
+                    name="description" 
+                    value="<%= description %>" 
+                    placeholder="Description"
+                    cols="30" rows="10" 
+                    class="<%= errors.find(e => e.param == 'description') ? 'invalid' : '' %> form-control mb-1"
+                ><%= description %></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/dashboard" class="btn btn-default">Go Back</a>
+            </form>
+        </div>
+    </main>
+
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

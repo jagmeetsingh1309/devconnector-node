@@ -1,0 +1,23 @@
+<header>
+    <nav class="navbar">
+        <div class="navbar-nav">
+            <div class="brand">
+                <a href="/">DevConnector</a>
+            </div>
+            <div class="right">
+                <a href="/profiles">Developers</a>
+                <a href="/posts">Posts</a>
+                <% if(!isLoggedIn) { %>
+                    <a href="/signup">Register</a>
+                    <a href="/login">Login</a>
+                <% } %>
+                <% if(isLoggedIn) { %>
+                    <a href="/dashboard"><i class="fas fa-user"></i> Dashboard</a>
+                    <form action="/logout" method="POST">
+                            <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </form>
+                <% } %>
+            </div>
+        </div`>
+    </nav>
+</header>

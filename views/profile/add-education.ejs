@@ -1,0 +1,57 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main class="mb-2">
+
+        <% if(errorMessage) { %>
+            <div class="msg mt-2">
+                <div class="err-msg"><%= errorMessage %></div>
+            </div>
+        <% } %>
+
+        <div class="grid">
+            <div class="page-header">
+                <h1 class="blue mb-1">Add An Education</h1>
+                <p class="mb-1">* = Mandatory Fields.</p>
+            </div>       
+            <form action="/add-education" method="POST">
+                <input 
+                    type="text" 
+                    name="school" 
+                    placeholder="* School" 
+                    class="<%= errors.find(e => e.param == 'school') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="text" 
+                    name="degree" 
+                    placeholder="* degree" 
+                    class="<%= errors.find(e => e.param == 'degree') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="date" 
+                    name="startDate" 
+                    placeholder="* start date(dd/mm/yyyy)" 
+                    class="<%= errors.find(e => e.param == 'startDate') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <input 
+                    type="date" 
+                    name="endDate" 
+                    placeholder="* end date(dd/mm/yyyy)" 
+                    class="<%= errors.find(e => e.param == 'endDate') ? 'invalid' : '' %> form-control mb-1"
+                >
+                <textarea 
+                    type="text" 
+                    name="description" 
+                    rows="5" 
+                    placeholder="Description" 
+                    class="<%= errors.find(e => e.param == 'description') ? 'invalid' : '' %>  form-control mb-2 "></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/dashboard" class="btn btn-default">Go Back</a>
+            </form>
+        </div>
+    </main>
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

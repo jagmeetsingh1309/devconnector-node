@@ -1,0 +1,32 @@
+.page-header{
+    grid-column: 2/6;
+}
+
+.profile-header,.profile-details{
+    grid-column: 2/12;
+}
+
+.profile-experience{
+    grid-column: 2/8;
+}
+
+.profile-education{
+    grid-column: 8/12;
+}
+
+.skill-list{
+    list-style: none;
+    margin-left: 3rem;
+    padding-bottom: 1rem;
+}
+
+.skill-list li{
+    margin: 0 1rem;
+}
+
+.skill-list  li::before{
+    content: '✓ ';
+    font-size: large;
+    font-weight: 800;
+    color: rgb(65, 170, 202);
+}

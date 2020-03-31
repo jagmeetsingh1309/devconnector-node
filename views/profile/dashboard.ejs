@@ -1,0 +1,101 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main class="mb-2">
+        <div class="grid mt-2">
+            <% if(successMessage.length > 0 || errorMessage.length > 0 ) { %>
+                <div class="msg">
+                    <% if(successMessage.length > 0 ){ %>
+                        <div class="success-msg"><%= successMessage %></div>
+                    <% } else { %>
+                        <div class="err-msg"><%= errorMessage %></div>
+                    <% } %>
+                </div>
+            <% } %>
+            
+            <div class="page-header mt-1">
+                <h1 class="blue">Dashboard</h1>
+                <h3 class="mb-1"><i class="fas fa-user"></i> Welcome, <%= user.name %></h3>
+                <a href="/edit-profile" class="btn btn-default mr-1"><i class="fas fa-user blue"></i> Edit Profile</a>
+                <a href="/add-experience" class="btn btn-default mr-1"><i class="blue fas fa-briefcase"></i> Add Experience</a>
+                <a href="/add-education" class="btn btn-default"><i class="blue fas fa-book"></i> Add Education</a>
+            </div>
+
+            <div class="profile-experience mt-1">
+                <h2 class="mb-1">Experience Credentials</h2>
+                <% if(experiences.length > 0) { %>
+                    <table>
+                        <tr>
+                            <th>Company</th>
+                            <th>Title</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Actions</th>
+                        </tr>
+                        <% experiences.forEach( function(experience){ %>
+                            <tr>
+                                <td><%= experience.company %></td>
+                                <td><%= experience.title %></td>
+                                <td><%= moment(experience.startDate).format( 'MMM-DD-YYYY') %></td>
+                                <td><%= moment(experience.endDate).format( 'MMM-DD-YYYY') %></td>
+                                <form action="/delete-experience" method="post">
+                                    <input type="hidden" name="experienceId" value="<%= experience._id %>">
+                                    <td>
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete
+                                    </td>
+                                </form>
+                            </tr>
+                        <% }); %>
+                    </table>
+                <% } else { %>
+                    <p>No Experience Found.</p>
+                <% }; %>
+            </div>
+
+            <div class="profile-education mt-1">
+                <h2 class="mb-1">Education Credentials</h2>
+                <% if(educations.length > 0) { %>
+                    <table>
+                        <tr>
+                            <th>School</th>
+                            <th>Degree</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Actions</th>
+                        </tr>
+                        <% educations.forEach(function(education){ %>
+                            <tr>
+                                <td><%= education.school %></td>
+                                <td><%= education.degree %></td>
+                                <td><%= moment(education.startDate).format( 'MMM-DD-YYYY') %></td>
+                                <td><%= moment(education.endDate).format( 'MMM-DD-YYYY') %></td>
+                                <form action="/delete-education" method="post">
+                                    <input type="hidden" name="educationId" value="<%= education._id %>">
+                                    <td>
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete
+                                    </td>
+                                </form>
+                            </tr>
+                        <% }); %>
+                    </table>
+                <% } else { %>
+                    <p>No Education Found.</p>
+                <% }; %>
+            </div>
+
+            <div class="page-footer">
+                <form action="/delete-account" method="post">
+                    <input type="hidden" name="userId" value="<%= user._id %>">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-user-minus"></i> Delete My Account</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+</body>
+
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

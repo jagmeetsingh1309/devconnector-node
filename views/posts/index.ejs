@@ -1,0 +1,76 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/css/posts.css">
+</head>
+
+<body>
+    <%- include('../partials/navigation.ejs') %>
+    <main>
+        <div class="grid">
+            <div class="page-header">
+                <h1 class="blue-headline">Posts</h1>
+                <h3><i class="fas fa-user"></i> Welcome to the community</h3>
+            </div>       
+            <div class="post-form">
+                <% if(userId) { %>
+                    <h3 class="blue-background mt-1 mb-1" style="padding:  5px;">Say Something...</h3>
+                    <form method="post" action="/add-post">
+                        <input type="hidden" name="userId" value="<%= userId %>">
+                        <textarea name="description" class="form-control" placeholder="Create A Post" rows="10" cols="10"></textarea>
+                        <button type="submit" class="btn btn-primary mt-1">Submit</button>
+                    </form>
+                <% } else { %>
+                    <p>Login To Create Post.</p>
+                <% } %>
+            </div>
+            <div class="post-list">
+                <% if(posts.length > 0) { %>
+                    <% posts.forEach( function(post){ %>
+                        <div class="card mb-2">
+                            <div class="card-body  d-flex">
+                                <div class="card-section m-1">
+                                    <% if(post.user.profile) { %>
+                                        <img class="rounded-img" src="<%= post.user.profile.imageUrl %>">
+                                    <% } %>
+                                    <h3 class="blue text-center"><%= post.user.name %></h3>
+                                </div>
+                                <div class="card-section d-flex ml-2 align-center ">
+                                    <div>
+                                        <p class="m-1"><%= post.description %></p>
+                                        <div class="card-actions d-flex mb-1">
+                                            <form class="mr-1" action="/like-post" method="post">
+                                                <input type="hidden" name="postId" value="<%= post._id %>">
+                                                <input type="hidden" name="userId" value="<%= userId %>">
+                                                <button type="submit" class="btn btn-default">
+                                                    <i class="fas fa-thumbs-up"></i> <span><%= post.likes %></span>
+                                                </button>
+                                            </form>
+                                            <form class="mr-1" action="/dislike-post" method="POST">
+                                                <input type="hidden" name="postId" value="<%= post._id %>">
+                                                <input type="hidden" name="userId" value="<%= userId %>">
+                                                <button type="submit" class="btn btn-default">
+                                                    <i class="fas fa-thumbs-down"></i> <span><%= post.dislikes %></span>
+                                                </button>
+                                            </form>
+                                            <a href="/posts/<%= post._id  %>" class="btn btn-primary mr-1">Discussions</a>
+                                            <% if(userId == post.user._id){ %>
+                                                <form action="/delete-post" method="post">
+                                                    <input type="hidden" name="postId" value="<%= post._id %>">
+                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                                </form>                                           
+                                            <% }; %>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No Post Found.</p>
+                <% }; %>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,20 @@
+.page-header{
+    grid-column: 2/6;
+}
+
+.developer-list{
+    grid-column: 2/10;
+}
+
+.skill-list{
+    list-style: none;
+    color: rgb(65, 170, 202);
+    font-weight: 800;
+}
+
+.skill-list li::before{
+    content: '✓ ';
+    font-size: large;
+    font-weight: 800;
+    color: rgb(65, 170, 202);
+}

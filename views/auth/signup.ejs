@@ -1,0 +1,56 @@
+<%- include('../partials/head.ejs') %>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <%- include('../partials/navigation.ejs') %>
+
+    <main>
+        <div class="grid">
+            <% if(errorMessage) { %>
+                <div class="msg mt-2">
+                    <div class="err-msg"><%= errorMessage %></div>
+                </div>
+            <% } %>
+            <div class="page-header mt-1">
+                <h1 class="blue">Sign Up</h1>
+                <h3>Create Your Account</h3>
+            </div>
+            <form action="/signup" method="post">
+                <input 
+                    class="<%= errors.find(e => e.param == 'name' ) ? 'invalid' : '' %> form-control mb-1" 
+                    type="text" 
+                    name="name" 
+                    placeholder="Name" 
+                    value="<%= oldInput.name %>"
+                >
+                <input 
+                    class="<%= errors.find(e => e.param == 'email' ) ? 'invalid' : '' %> form-control mb-1" 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    value="<%= oldInput.email %>"
+                >
+                <input 
+                    class="<%= errors.find(e => e.param == 'password' ) ? 'invalid' : '' %> form-control mb-1"
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value="<%= oldInput.password%>"
+                >
+                <input 
+                    class="<%= errors.find(e => e.param == 'confirmPassword' ) ? 'invalid' : '' %> form-control" 
+                    type="password" 
+                    name="confirmPassword" 
+                    placeholder="Confirm Password" 
+                    value="<%= oldInput.confirmPassword %>"
+                >
+                <button type="submit" class="btn btn-primary mt-1 mb-1">Submit</button>
+            </form>
+            
+            <p class="page-footer">Already have an account? <a href="/login" class="blue">Sign In</a></p>
+    
+        </div>
+    </main>
+<%- include('../partials/end.ejs') %>
+<%- include('../partials/footer.ejs') %>

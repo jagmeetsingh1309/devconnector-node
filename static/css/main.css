@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+main{
+    min-height: 77vh;
+}
+
+/*utility style starts*/
+.m-1{
+    margin: 1rem;
+}
+
+.mt-1{
+    margin-top: 1rem;
+}
+.mt-2{
+    margin-top: 2rem;
+}
+
+.ml-1{
+    margin-left: 1rem;
+}
+
+.ml-2{
+    margin-left: 2rem;
+}
+
+.mr-1{
+    margin-right: 1rem;
+}
+
+.mr-2{
+    margin-right: 2rem;
+}
+
+.mb-1{
+    margin-bottom: 1rem;
+}
+
+.mb-2{
+    margin-bottom: 2rem;
+}
+
+.p-1{
+    padding: 1rem;
+}
+
+.p-2{
+    padding: 2rem;
+}
+
+.pt-1{
+    padding-top: 1rem;
+}
+
+.pt-2{
+    padding-top: 2rem;
+}
+
+.text-center{
+    text-align: center;
+}
+.d-flex{
+    display: flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.w-90{
+    width: 90%;
+}
+
+
+/* utility style ends */
+
+h1{
+    font-size: 2.5em;
+}
+
+.msg{
+    grid-column: 4/10;
+    width: 100%;
+}
+
+.err-msg{
+    padding: 1rem 0;
+    text-align: center;
+    color: red;
+    background-color: rgb(247, 118, 118);
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+.success-msg{
+    padding: 1rem 0;
+    text-align: center;
+    color: rgb(31, 221, 31);
+    background-color: rgb(174, 241, 174);
+    border-radius: 5px;
+    border: 1px solid rgb(64, 163, 64);
+}
+
+.form-control{
+    border: 1px solid rgb(182, 182, 182);
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 10px;
+}
+
+.form-control:focus{
+    outline: rgb(182, 182, 182);
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 10px;
+}
+
+.invalid{
+    border: 1px solid red;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap: 1em;
+}
+
+.card{
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    background-color: rgb(247, 241, 241);
+}
+
+.rounded-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+
+/* Button style starts*/
+.btn{
+    display: inline-block;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+}
+
+.btn:hover{
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: #5995ED;  
+    color: white;
+    border: 1px solid #044389;
+}
+
+.btn-primary:hover{
+    background-color: white;
+    color: #044389;
+    border: 1px solid #044389;
+}
+
+.btn-default {
+    background-color: rgb(211, 202, 202);
+    color: black;
+}
+
+.btn-default:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(211, 202, 202);
+}
+
+.btn-danger {
+    background-color: rgb(189, 18, 18);
+    color: white;
+}
+
+.btn-danger:hover{
+    background-color: white;
+    color: rgb(189, 18, 18);
+    border: 1px solid rgb(189, 18, 18);
+}
+/* Button style ends*/
+
+.blue{
+    color: rgb(65, 170, 202);
+}
+
+.blue-background{
+    color: white;
+    background-color: rgb(65, 170, 202);
+}
+

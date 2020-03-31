@@ -1,0 +1,59 @@
+.navbar{
+    width: 100%;
+    background-color: rgb(49, 45, 45);
+    color:white;
+    margin:0;
+    padding: 0.5rem 0;
+}
+
+.navbar-nav{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+
+.navbar-nav .right{
+    grid-column: 7/12;
+    display: flex;
+}
+
+.navbar-nav{
+    margin: 1rem;
+    cursor: pointer;   
+}
+
+.navbar-nav button{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+.navbar-nav a,button{
+    text-decoration: none;
+    color: white;
+    margin: 0 1rem;
+}
+
+.footer{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap: 1em;
+    width: 100%;
+    background-color: rgb(49, 45, 45);
+    color:white;
+    margin:0;
+    padding: 0.5rem 0;
+}
+
+.footer ul{
+    display: flex;
+    grid-column: 4/10;
+    list-style: none;
+}
+
+.footer ul li{
+    margin: 1rem;
+}
+
+
